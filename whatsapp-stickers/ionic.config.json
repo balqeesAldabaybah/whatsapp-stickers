@@ -1,0 +1,7 @@
+{
+  "name": "whatsapp stickers",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

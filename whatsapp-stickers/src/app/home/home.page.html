@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Stickers
+    </ion-title>
+  </ion-toolbar>
+
+  <ion-header>
+    <ion-segment (ionChange)="segmentChange($event)" color="warning" scrollable>
+      <ion-segment-button checked layout="icon-start" value="AllSticker">
+        <ion-label> All Stickers </ion-label>
+      </ion-segment-button>
+      <ion-segment-button layout="icon-start" value="personalSticker">
+        <ion-label>Make Sticker</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-header>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="segStatus == 'AllSticker'">
+    <ion-list>
+      <app-sticker-item *ngFor="let sticker of StickersList" [stickerItem] = "sticker"></app-sticker-item>
+    </ion-list>
+
+  </div>
+  <div *ngIf="segStatus == 'personalSticker'">
+    personal stickers
+  </div>
+</ion-content>

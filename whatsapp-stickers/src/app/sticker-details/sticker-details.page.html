@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/stickers"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sticker Details</ion-title>
+  
+      <ion-buttons slot="end"> 
+        <ion-button slot="end">
+          <ion-icon name="add-circle-outline" slot="icon-only"></ion-icon></ion-button>
+      </ion-buttons>
+    
+  </ion-toolbar>
+  <ion-grid>
+    <ion-row padding-start padding-end>
+      <ion-avatar>
+        <ion-img [src]="loadedSticker.imagesURL[0]"></ion-img>
+      </ion-avatar>
+
+      <ion-col>
+        <ion-label>
+          <h1>{{loadedSticker.Name}}</h1>
+          Created by {{loadedSticker.nickName}}
+          <h3>{{loadedSticker.description}}</h3>
+        </ion-label>
+      </ion-col>
+     
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row
+      *ngFor="let in of counter(numberOfStickerRows); let i = index;"
+      padding-top
+    >
+      <ion-col *ngFor="let x of counter(numberOfColsInRow); let c = index;">
+        <ion-img [src]="loadedSticker.imagesURL[c]"></ion-img>
+      </ion-col>
+    </ion-row>
+
+    <ion-row padding-top>
+      <ion-col *ngFor="let i of counter(numberOfColsInRow); let c = index; ">
+        <ion-img
+          *ngIf="(numberOfStickerRows*numberOfColsInRow)+c < loadedSticker.imagesURL.length"
+          [src]="loadedSticker.imagesURL[(numberOfStickerRows*numberOfColsInRow)+c]"
+        ></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

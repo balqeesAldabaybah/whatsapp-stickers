@@ -1,0 +1,25 @@
+<ion-item >
+        
+  <ion-label [routerLink] ="['/stickers' , stickerItem.id]" >
+     <h1>{{stickerItem.Name}} <span style="font-size: 12pt;">{{stickerItem.nickName}} . {{stickerItem.imagesURL.length.toString()}} stickers. {{stickerItem.sizeByte.toString()}}</span>  </h1>
+     <ion-grid>
+       <ion-row>
+         <ion-col  *ngFor = "let imgURL of counter(5); let i=index;" >
+          <ion-img  [src]= "stickerItem.imagesURL[i]"></ion-img>
+         </ion-col>
+       </ion-row>
+     </ion-grid>
+    
+  </ion-label>
+  <ion-avatar>
+    <ion-buttons>
+      <ion-button slot="end" (ionFocus) = "AddPack($event)">
+        <ion-icon name="add-circle-outline" slot="icon-only" ></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-avatar>
+  <ion-list *ngIf="addClicked">
+    <ion-item   *ngFor= "let x of appList">
+       {{x}}
+    </ion-item>
+  </ion-list>
+</ion-item>
